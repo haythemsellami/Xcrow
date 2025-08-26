@@ -28,7 +28,6 @@ The UniversalXcrowVerifier contract queries SP1 Helios with a block number, cont
 
 Security comes entirely from Ethereum state + SP1 proofs, not from trusted parties.
 
-```
 ## 🔗 Flow
 
 ```mermaid
