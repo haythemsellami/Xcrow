@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 import {ISP1Helios} from "./interface/ISP1Helios.sol";
 
 contract UniversalXcrowVerifier {
-    
     uint256 public constant XCROW_ESCROW_HASHES_MAPPING_SLOT_INDEX = 0;
 
     address public immutable xcrow;

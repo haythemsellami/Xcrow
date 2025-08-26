@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 contract Xcrow {
     struct Escrow {
-        address sender; 
+        address sender;
         address token;
         uint256 amount;
     }
