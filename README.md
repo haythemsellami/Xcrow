@@ -2,7 +2,7 @@
 
 **Cross-chain escrow powered by zero-knowledge proofs.**
 
-Xcrow lets users lock tokens on Ethereum mainnet and prove those deposits on BNB Chain using [Succinct SP1 Helios](https://github.com/succinctlabs/sp1-helios). 
+Xcrow lets users lock tokens on Ethereum mainnet and prove those deposits on destination chain using [Succinct SP1 Helios](https://github.com/succinctlabs/sp1-helios). 
 
 ## ✨ What is Xcrow?
 
@@ -18,7 +18,7 @@ This enables secure, proof-based escrow settlement across chains — without mul
 
 A user calls lock(token, amount) on the Xcrow contract. This transfers tokens and stores a hash of the escrow data in a mapping.
 
-### Proof on BNB Chain:
+### Proof on Destination Chain:
 
 The UniversalXcrowVerifier contract queries SP1 Helios with a block number, contract address, and computed storage slot.
 - If the slot value matches the expected escrow hash, the verifier confirms the deposit.
