@@ -38,7 +38,7 @@ contract Xcrow {
     function lock(address token, uint256 amount) public returns (uint256) {
         uint256 currentUuid = escrowUuid++;
 
-        bytes32 escrowHash = keccak256(abi.encode(currentUuid, msg.sender, token, amount));
+        bytes32 escrowHash = _optimizedHashing(currentUuid, msg.sender, token, amount);
         escrowHashes[currentUuid] = escrowHash;
 
         IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
@@ -46,5 +46,28 @@ contract Xcrow {
         emit EscrowLocked(currentUuid, escrowHash);
 
         return currentUuid;
+    }
+
+    /**
+     * @dev Optimized hash computation using inline assembly
+     * @param uuid The unique identifier of the escrow
+     * @param sender The address that locked the tokens
+     * @param token The address of the ERC20 token
+     * @param amount The amount of tokens locked
+     * @return hash The computed keccak256 hash
+     */
+    function _optimizedHashing(uint256 uuid, address sender, address token, uint256 amount)
+        internal
+        pure
+        returns (bytes32 hash)
+    {
+        assembly {
+            let ptr := mload(0x40)
+            mstore(ptr, uuid)
+            mstore(add(ptr, 0x20), sender)
+            mstore(add(ptr, 0x40), token)
+            mstore(add(ptr, 0x60), amount)
+            hash := keccak256(ptr, 0x80)
+        }
     }
 }
