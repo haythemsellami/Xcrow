@@ -11,7 +11,7 @@ import {ISP1Helios} from "./interface/ISP1Helios.sol";
  */
 contract UniversalXcrowVerifier {
     /// @dev Storage slot index of the escrowHashes mapping in the Xcrow contract
-    uint256 public constant XCROW_ESCROW_HASHES_MAPPING_SLOT_INDEX = 0;
+    uint256 public constant XCROW_ESCROW_HASHES_MAPPING_SLOT_INDEX = 1;
 
     /// @dev Address of the Xcrow contract on Ethereum
     address public immutable xcrow;
